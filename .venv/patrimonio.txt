@@ -1,0 +1,9 @@
+Id do produto: 
+Número de série: 
+Número do equipamento: 
+Tipo do produto: 
+Descrição do produto: 
+Localização do produto: 
+Data de fabricação do produto: 
+Data de aquisação do produto: 
+---------------------------------

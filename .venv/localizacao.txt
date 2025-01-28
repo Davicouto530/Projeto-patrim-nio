@@ -1,0 +1,8 @@
+Id do produto: 24
+Empresa: Davi lindo
+Logradouro: local
+Número do patrimonio: 32
+Prédio do patrimonio: 234
+Andar: 17
+Sala: 23
+---------------------------------
