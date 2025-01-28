@@ -6,4 +6,20 @@ Descrição do produto:
 Localização do produto: 
 Data de fabricação do produto: 
 Data de aquisação do produto: 
+---------------------------------Id do produto: v
+Número de série: v
+Número do equipamento: v
+Tipo do produto: vv
+Descrição do produto: v
+Localização do produto: v
+Data de fabricação do produto: v
+Data de aquisação do produto: v
+---------------------------------Id do produto: v
+Número de série: v
+Número do equipamento: v
+Tipo do produto: v
+Descrição do produto: v
+Localização do produto: v
+Data de fabricação do produto: v
+Data de aquisação do produto: v
 ---------------------------------

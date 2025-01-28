@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QMessageBox 
 import sys
 
 class Patrimonio(QWidget):
@@ -133,18 +133,24 @@ class Patrimonio(QWidget):
         self.setLayout(self.layout_v)
 
     def cadastrar(self):
-        # Vamos criar uma variável que fara referência ao arquivo de texto
-        arquivo = open("patrimonio.txt", "+a", encoding="utf8")
-        arquivo.write(f"Id do produto: {self.edit_id.text()}\n")
-        arquivo.write(f"Número de série: {self.edit_serie.text()}\n")
-        arquivo.write(f"Número do equipamento: {self.edit_nome.text()}\n")
-        arquivo.write(f"Tipo do produto: {self.edit_tipo.text()}\n")
-        arquivo.write(f"Descrição do produto: {self.edit_desc.text()}\n")
-        arquivo.write(f"Localização do produto: {self.edit_local.text()}\n")
-        arquivo.write(f"Data de fabricação do produto: {self.edit_dataf.text()}\n")
-        arquivo.write(f"Data de aquisação do produto: {self.edit_dataq.text()}\n")
-        arquivo.write("---------------------------------")
-        arquivo.close()
+        if(self.edit_id.text() == "" or self.edit_serie.text() == "" or self.edit_nome.text() == "" or self.edit_tipo.text() == "" or self.edit_desc.text() == "" or self.edit_local.text() == "" or self.edit_dataf.text() == "" or self.edit_dataq.text() == ""):
+            QMessageBox.critical(self,"Erro","Você deve preencher todos os campos!")
+        else:
+            # Vamos criar uma variável que fara referência ao arquivo de texto
+            arquivo = open("patrimonio.txt", "+a", encoding="utf8")
+            arquivo.write(f"Id do produto: {self.edit_id.text()}\n")
+            arquivo.write(f"Número de série: {self.edit_serie.text()}\n")
+            arquivo.write(f"Número do equipamento: {self.edit_nome.text()}\n")
+            arquivo.write(f"Tipo do produto: {self.edit_tipo.text()}\n")
+            arquivo.write(f"Descrição do produto: {self.edit_desc.text()}\n")
+            arquivo.write(f"Localização do produto: {self.edit_local.text()}\n")
+            arquivo.write(f"Data de fabricação do produto: {self.edit_dataf.text()}\n")
+            arquivo.write(f"Data de aquisação do produto: {self.edit_dataq.text()}\n")
+            arquivo.write("---------------------------------")
+            arquivo.close()
+
+            # Serve para exibir essa mensagem quando clicar em "cadastrar"
+            QMessageBox.information(self,"Salvo","Os dados do patrimonio foram salvos")
 
 
 
