@@ -1,0 +1,9 @@
+Id do produto: 353
+Número de série: 4567
+Número do equipamento: Monitor
+Tipo do produto: Monitor LG 22
+Descrição do produto: Monitor lg full hd
+Localização do produto: sala 16
+Data de fabricação do produto: 21/09/24
+Data de aquisação do produto: 11/03/23
+---------------------------------

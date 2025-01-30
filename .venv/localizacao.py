@@ -115,7 +115,7 @@ class Localizacao(QWidget):
             QMessageBox.critical(self,"Erro","Você deve preencher todos os campos!")
         else:
             # Vamos criar uma variável que fara referência ao arquivo de texto
-            arquivo = open("localizacao.txt", "+a", encoding="utf8")
+            arquivo = open("localizacao.txt","+a",encoding="utf8")
             arquivo.write(f"Id do produto: {self.edit_id.text()}\n")
             arquivo.write(f"Empresa: {self.edit_empresa.text()}\n")
             arquivo.write(f"Logradouro: {self.edit_logra.text()}\n")

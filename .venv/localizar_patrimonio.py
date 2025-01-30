@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QMessageBox 
 import sys
+import csv
 
-class Patrimonio(QWidget):
+class LocalizarPatrimonio(QWidget):
     def __init__(self):
         super().__init__()
 
@@ -28,6 +29,9 @@ class Patrimonio(QWidget):
         # Adicionar o label id e o lineedit ao layout vertical
         self.layout_v.addWidget(self.label_id)
         self.layout_v.addWidget(self.edit_id)
+        self.btnbuscar = QPushButton('Buscar patrimonio')
+        self.layout_v.addWidget(self.btnbuscar)
+        self.btnbuscar.clicked.connect(self.localizar)
 
         # Número de serie
         # Labels para o número de serie do produto
@@ -119,39 +123,25 @@ class Patrimonio(QWidget):
         # Adicionar o label data e o lineedit ao layout vertical
         self.layout_v.addWidget(self.label_dataq)
         self.layout_v.addWidget(self.edit_dataq)
-        
-
-        self.button = QPushButton("Cadastrar")
-        self.button.setStyleSheet("QPushButton{background-color:black;color:white;font-size:10pt;font-weight:bold}")
-
-        # Chamar a função de cadastro do cliente ao clicar no botão
-        self.button.clicked.connect(self.cadastrar)
-
-        self.layout_v.addWidget(self.button)
 
         # Adicionanado o layout na tela
         self.setLayout(self.layout_v)
 
-    def cadastrar(self):
-        if(self.edit_id.text() == "" or self.edit_serie.text() == "" or self.edit_nome.text() == "" or self.edit_tipo.text() == "" or self.edit_desc.text() == "" or self.edit_local.text() == "" or self.edit_dataf.text() == "" or self.edit_dataq.text() == ""):
-            QMessageBox.critical(self,"Erro","Você deve preencher todos os campos!")
-        else:
-            # Vamos criar uma variável que fara referência ao arquivo de texto
-            arquivo = open("patrimonio.csv","+a",encoding="utf8")
-            arquivo.write(f"{self.edit_id.text()};")
-            arquivo.write(f"{self.edit_serie.text()};")
-            arquivo.write(f"{self.edit_nome.text()};")
-            arquivo.write(f"{self.edit_tipo.text()};")
-            arquivo.write(f"{self.edit_desc.text()};")
-            arquivo.write(f"{self.edit_local.text()};")
-            arquivo.write(f"{self.edit_dataf.text()};")
-            arquivo.write(f"{self.edit_dataq.text()}\n")
-            arquivo.close()
+    def localizar(self):
+        # Abrir o arquivo csv e atribuir a uma variável
+        arquivo = open("patrimonio.csv","r",encoding="utf-8")
+        linhas = csv.reader(arquivo) # essa linha serve para ler o que está dentro do arquivo
 
-            # Serve para exibir essa mensagem quando clicar em "cadastrar"
-            QMessageBox.information(self,"Salvo","Os dados do patrimonio foram salvos")
-
-
+        for i in linhas:
+            lin = str(i).replace("['","").replace("']","").split(";")
+            if(lin[0] == self.edit_id.text()):
+                self.edit_serie.setText(lin[1])
+                self.edit_nome.setText(lin[2])
+                self.edit_tipo.setText(lin[3])
+                self.edit_desc.setText(lin[4])
+                self.edit_local.setText(lin[5])
+                self.edit_dataf.setText(lin[6])
+                self.edit_dataq.setText(lin[7])
 
 
 
